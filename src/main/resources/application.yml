@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306
+    username: root
+    password: 408897865
+  mvc:
+    pathmatch:
+      # 配置策略
+      matching-strategy: ant-path-matcher

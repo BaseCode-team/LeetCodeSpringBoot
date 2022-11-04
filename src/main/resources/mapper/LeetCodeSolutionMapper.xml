@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.team.leetcode.infra.algorithm.mapper.LeetCodeSolutionMapper">
+
+    <resultMap id="BaseResultMap" type="study.team.leetcode.infra.algorithm.LeetCodeSolution">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="problem_id" column="problem_id" jdbcType="INTEGER"/>
+            <result property="problem_solution" column="problem_solution" jdbcType="VARCHAR"/>
+            <result property="solution_author" column="solution_author" jdbcType="VARCHAR"/>
+            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="update_time" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,problem_id,problem_solution,
+        solution_author,create_time,update_time
+    </sql>
+</mapper>
