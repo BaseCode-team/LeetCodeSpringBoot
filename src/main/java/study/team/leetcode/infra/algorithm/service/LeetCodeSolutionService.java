@@ -1,6 +1,6 @@
 package study.team.leetcode.infra.algorithm.service;
 
-import study.team.leetcode.infra.algorithm.LeetCodeSolution;
+import study.team.leetcode.infra.algorithm.po.LeetCodeSolution;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

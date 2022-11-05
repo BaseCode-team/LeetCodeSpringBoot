@@ -1,15 +1,18 @@
-package study.team.leetcode.infra.algorithm;
+package study.team.leetcode.infra.algorithm.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
 /**
  * 力扣题解
+ * @author JiaHao
  * @TableName leet_code_solution
  */
 @TableName(value ="leet_code_solution")
@@ -25,32 +28,33 @@ public class LeetCodeSolution implements Serializable {
      * 题目id
      */
     @TableField(value = "problem_id")
-    private Integer problem_id;
+    private Integer problemId;
 
     /**
      * 解题代码
      */
     @TableField(value = "problem_solution")
-    private String problem_solution;
+    private String problemSolution;
 
     /**
      * 解题人
      */
     @TableField(value = "solution_author")
-    private String solution_author;
+    private String solutionAuthor;
 
     /**
      * 首次提交解题时间
      */
     @TableField(value = "create_time")
-    private Date create_time;
+    private Date createTime;
 
     /**
      * 更新答案时间
      */
     @TableField(value = "update_time")
-    private Date update_time;
+    private Date updateTime;
 
+    @Serial
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -67,11 +71,11 @@ public class LeetCodeSolution implements Serializable {
         }
         LeetCodeSolution other = (LeetCodeSolution) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getProblem_id() == null ? other.getProblem_id() == null : this.getProblem_id().equals(other.getProblem_id()))
-            && (this.getProblem_solution() == null ? other.getProblem_solution() == null : this.getProblem_solution().equals(other.getProblem_solution()))
-            && (this.getSolution_author() == null ? other.getSolution_author() == null : this.getSolution_author().equals(other.getSolution_author()))
-            && (this.getCreate_time() == null ? other.getCreate_time() == null : this.getCreate_time().equals(other.getCreate_time()))
-            && (this.getUpdate_time() == null ? other.getUpdate_time() == null : this.getUpdate_time().equals(other.getUpdate_time()));
+            && (this.getProblemId() == null ? other.getProblemId() == null : this.getProblemId().equals(other.getProblemId()))
+            && (this.getProblemSolution() == null ? other.getProblemSolution() == null : this.getProblemSolution().equals(other.getProblemSolution()))
+            && (this.getSolutionAuthor() == null ? other.getSolutionAuthor() == null : this.getSolutionAuthor().equals(other.getSolutionAuthor()))
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     @Override
@@ -79,11 +83,11 @@ public class LeetCodeSolution implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getProblem_id() == null) ? 0 : getProblem_id().hashCode());
-        result = prime * result + ((getProblem_solution() == null) ? 0 : getProblem_solution().hashCode());
-        result = prime * result + ((getSolution_author() == null) ? 0 : getSolution_author().hashCode());
-        result = prime * result + ((getCreate_time() == null) ? 0 : getCreate_time().hashCode());
-        result = prime * result + ((getUpdate_time() == null) ? 0 : getUpdate_time().hashCode());
+        result = prime * result + ((getProblemId() == null) ? 0 : getProblemId().hashCode());
+        result = prime * result + ((getProblemSolution() == null) ? 0 : getProblemSolution().hashCode());
+        result = prime * result + ((getSolutionAuthor() == null) ? 0 : getSolutionAuthor().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
+        result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         return result;
     }
 
@@ -94,11 +98,11 @@ public class LeetCodeSolution implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", problem_id=").append(problem_id);
-        sb.append(", problem_solution=").append(problem_solution);
-        sb.append(", solution_author=").append(solution_author);
-        sb.append(", create_time=").append(create_time);
-        sb.append(", update_time=").append(update_time);
+        sb.append(", problemId=").append(problemId);
+        sb.append(", problemSolution=").append(problemSolution);
+        sb.append(", solutionAuthor=").append(solutionAuthor);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

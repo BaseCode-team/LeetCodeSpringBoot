@@ -1,7 +1,7 @@
 package study.team.leetcode.infra.algorithm.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import study.team.leetcode.infra.algorithm.LeetCodeSolution;
+import study.team.leetcode.infra.algorithm.po.LeetCodeSolution;
 import study.team.leetcode.infra.algorithm.service.LeetCodeSolutionService;
 import study.team.leetcode.infra.algorithm.mapper.LeetCodeSolutionMapper;
 import org.springframework.stereotype.Service;

@@ -4,12 +4,15 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
 /**
  * 力扣题目
+ * @author JiaHao
  * @TableName leet_code_problem
  */
 @TableName(value ="leet_code_problem")
@@ -43,7 +46,7 @@ public class LeetCodeProblem implements Serializable {
      * 题目通过率
      */
     @TableField(value = "pass_rate")
-    private String pass_rate;
+    private String passRate;
 
     /**
      * 题目难度等级
@@ -55,14 +58,15 @@ public class LeetCodeProblem implements Serializable {
      * 创建时间
      */
     @TableField(value = "create_time")
-    private Date create_time;
+    private Date createTime;
 
     /**
      * 更新时间
      */
     @TableField(value = "update_time")
-    private Integer update_time;
+    private Date updateTime;
 
+    @Serial
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -82,10 +86,10 @@ public class LeetCodeProblem implements Serializable {
             && (this.getNo() == null ? other.getNo() == null : this.getNo().equals(other.getNo()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
-            && (this.getPass_rate() == null ? other.getPass_rate() == null : this.getPass_rate().equals(other.getPass_rate()))
+            && (this.getPassRate() == null ? other.getPassRate() == null : this.getPassRate().equals(other.getPassRate()))
             && (this.getLevel() == null ? other.getLevel() == null : this.getLevel().equals(other.getLevel()))
-            && (this.getCreate_time() == null ? other.getCreate_time() == null : this.getCreate_time().equals(other.getCreate_time()))
-            && (this.getUpdate_time() == null ? other.getUpdate_time() == null : this.getUpdate_time().equals(other.getUpdate_time()));
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     @Override
@@ -96,10 +100,10 @@ public class LeetCodeProblem implements Serializable {
         result = prime * result + ((getNo() == null) ? 0 : getNo().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        result = prime * result + ((getPass_rate() == null) ? 0 : getPass_rate().hashCode());
+        result = prime * result + ((getPassRate() == null) ? 0 : getPassRate().hashCode());
         result = prime * result + ((getLevel() == null) ? 0 : getLevel().hashCode());
-        result = prime * result + ((getCreate_time() == null) ? 0 : getCreate_time().hashCode());
-        result = prime * result + ((getUpdate_time() == null) ? 0 : getUpdate_time().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
+        result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         return result;
     }
 
@@ -113,10 +117,10 @@ public class LeetCodeProblem implements Serializable {
         sb.append(", no=").append(no);
         sb.append(", name=").append(name);
         sb.append(", description=").append(description);
-        sb.append(", pass_rate=").append(pass_rate);
+        sb.append(", pass_rate=").append(passRate);
         sb.append(", level=").append(level);
-        sb.append(", create_time=").append(create_time);
-        sb.append(", update_time=").append(update_time);
+        sb.append(", create_time=").append(createTime);
+        sb.append(", update_time=").append(updateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

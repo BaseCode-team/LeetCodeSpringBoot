@@ -1,4 +1,4 @@
-package study.team.leetcode.domain.algorithm.entity;
+package study.team.leetcode.domain.common.entity;
 
 import lombok.Data;
 

@@ -1,5 +1,6 @@
 package study.team.leetcode.infra.algorithm.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import study.team.leetcode.infra.algorithm.po.LeetCodeProblem;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2022-11-04 16:20:26
 * @Entity study.team.leetcode.infra.po.algorithm.LeetCodeProblem
 */
+@Mapper
 public interface LeetCodeProblemMapper extends BaseMapper<LeetCodeProblem> {
 
 }
