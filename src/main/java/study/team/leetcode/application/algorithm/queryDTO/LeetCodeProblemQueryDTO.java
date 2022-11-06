@@ -15,7 +15,7 @@ import java.util.Date;
  * @description 力扣问题查询DTO
  */
 @Data
-@ApiModel(value = "LeetCodeProblemQueryDTO",description = "力扣问题查询入参")
+@ApiModel(value = "LeetCodeProblemQueryDTO", description = "前端发送的需要查询的条件")
 public class LeetCodeProblemQueryDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
