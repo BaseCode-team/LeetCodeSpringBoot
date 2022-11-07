@@ -3,13 +3,15 @@ package study.team.leetcode.infra.repository.algorithm;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import study.team.leetcode.application.algorithm.queryDTO.LeetCodeProblemQueryDTO;
 import study.team.leetcode.application.algorithm.vo.LeetCodeProblemVO;
-import study.team.leetcode.infra.algorithm.assmble.LeetCodeProblemAssmble;
 import study.team.leetcode.infra.algorithm.po.LeetCodeProblem;
 import study.team.leetcode.infra.algorithm.service.LeetCodeProblemService;
 
+import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,9 +23,11 @@ import java.util.List;
 @Service
 @Slf4j
 public class QueryRepository {
+    @Resource
+    private ConversionService conversionService;
     private final LeetCodeProblemService service;
 
-    public QueryRepository(LeetCodeProblemService service){
+    public QueryRepository(LeetCodeProblemService service) {
         this.service = service;
     }
 
@@ -36,10 +40,13 @@ public class QueryRepository {
                 .eq(StringUtils.checkValNotNull(dto.getLevel()), LeetCodeProblem::getLevel, dto.getLevel())
                 .eq(StringUtils.checkValNotNull(dto.getCreateTime()), LeetCodeProblem::getCreateTime, dto.getCreateTime());
         log.info("查询信息: {}", dto);
-        return LeetCodeProblemAssmble.INSTANCE.toVO(service.getOne(queryWrapper));
+        LeetCodeProblem result = service.getOne(queryWrapper);
+        return conversionService.convert(result, LeetCodeProblemVO.class);
     }
 
+    @SuppressWarnings("unchecked")
     public List<LeetCodeProblemVO> queryList(LeetCodeProblemQueryDTO dto) {
+        List<LeetCodeProblem> result = new ArrayList<>();
         LambdaQueryWrapper<LeetCodeProblem> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper
                 .eq(StringUtils.checkValNotNull(dto.getId()), LeetCodeProblem::getId, dto.getId())
@@ -49,6 +56,7 @@ public class QueryRepository {
                 .eq(StringUtils.checkValNotNull(dto.getLevel()), LeetCodeProblem::getLevel, dto.getLevel())
                 .eq(StringUtils.checkValNotNull(dto.getCreateTime()), LeetCodeProblem::getCreateTime, dto.getCreateTime());
         log.info("查询信息: {}", dto);
-        return LeetCodeProblemAssmble.INSTANCE.toVOList(service.list(queryWrapper));
+        result = service.list(queryWrapper);
+        return conversionService.convert(result, ArrayList.class);
     }
 }

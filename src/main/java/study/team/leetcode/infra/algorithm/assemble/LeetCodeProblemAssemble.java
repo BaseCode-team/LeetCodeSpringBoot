@@ -1,7 +1,8 @@
-package study.team.leetcode.infra.algorithm.assmble;
+package study.team.leetcode.infra.algorithm.assemble;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
 import study.team.leetcode.application.algorithm.vo.LeetCodeProblemVO;
 import study.team.leetcode.infra.algorithm.po.LeetCodeProblem;
 
@@ -10,9 +11,9 @@ import java.util.List;
 /**
  * @author JiaHao
  */
-@Mapper
-public interface LeetCodeProblemAssmble {
-    LeetCodeProblemAssmble INSTANCE = Mappers.getMapper(LeetCodeProblemAssmble.class);
+@Mapper(componentModel = "spring")
+public interface LeetCodeProblemAssemble extends Converter<LeetCodeProblem, LeetCodeProblemVO> {
+    LeetCodeProblemAssemble INSTANCE = Mappers.getMapper(LeetCodeProblemAssemble.class);
 
     /**
      * 将LeetCodeProblem转换为LeetCodeProblemVO
@@ -23,7 +24,9 @@ public interface LeetCodeProblemAssmble {
      * @methodName toVO
      * @date 2022/11/6 21:47
      **/
-    LeetCodeProblemVO toVO(LeetCodeProblem po);
+
+    @Override
+    LeetCodeProblemVO convert(LeetCodeProblem po);
 
     /**
      * 将List<LeetCodeProblem>转换为List<LeetCodeProblemVO>
