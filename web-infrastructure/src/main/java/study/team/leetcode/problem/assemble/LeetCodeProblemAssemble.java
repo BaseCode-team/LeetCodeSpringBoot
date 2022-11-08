@@ -1,0 +1,43 @@
+package study.team.leetcode.problem.assemble;
+
+import org.jetbrains.annotations.NotNull;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
+import study.team.leetcode.dto.data.LeetCodeProblemDTO;
+import study.team.leetcode.problem.LeetCodeProblem;
+import study.team.leetcode.problem.po.LeetCodeProblemDO;
+
+import java.util.List;
+
+/**
+ * @author JiaHao
+ */
+@Mapper(componentModel = "spring")
+public interface LeetCodeProblemAssemble extends Converter<LeetCodeProblemDO, LeetCodeProblem> {
+    LeetCodeProblemAssemble INSTANCE = Mappers.getMapper(LeetCodeProblemAssemble.class);
+
+    /**
+     * 将LeetCodeProblem转换为LeetCodeProblemVO
+     *
+     * @param po - 数据库对应 LeetCodeProblem po
+     * @return study.team.leetcode.application.algorithm.vo.LeetCodeProblemVO
+     * @author JiaHao
+     * @methodName toVO
+     * @date 2022/11/6 21:47
+     **/
+
+    @Override
+    LeetCodeProblem convert(@NotNull LeetCodeProblemDO po);
+
+    /**
+     * 将List<LeetCodeProblem>转换为List<LeetCodeProblemVO>
+     *
+     * @param poList - List<LeetCodeProblem>
+     * @return java.util.List<study.team.leetcode.application.algorithm.vo.LeetCodeProblemVO>
+     * @author JiaHao
+     * @methodName toVOList
+     * @date 2022/11/6 21:49
+     **/
+    List<LeetCodeProblemDTO> toVOList(List<LeetCodeProblemDO> poList);
+}

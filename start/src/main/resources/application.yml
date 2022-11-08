@@ -1,0 +1,81 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/leetcode
+    username: root
+    password: 408897865
+  mvc:
+    pathmatch:
+      # 配置策略
+      matching-strategy: ant-path-matcher
+
+
+knife4j:
+  # 是否开启增强模式
+  enable: true
+  # 前端Ui的个性化配置属性
+  setting:
+    # Ui默认显示语言,目前主要有两种:中文(zh-CN)、英文(en-US)
+    language: zh-CN
+    # 是否显示界面中SwaggerModel功能
+    enableSwaggerModels: true
+    # 是否显示界面中"文档管理"功能
+    enableDocumentManage: true
+    # 重命名SwaggerModel名称,默认
+    swaggerModelName: 实体类列表
+    # 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
+    enableVersion: false
+    # 是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
+    enableReloadCacheParameter: false
+    # 调试Tab是否显示AfterScript功能,默认开启
+    enableAfterScript: true
+    # 具体接口的过滤类型
+    enableFilterMultipartApiMethodType: POST
+    # 针对RequestMapping的接口请求类型,在不指定参数类型的情况下,如果不过滤,默认会显示7个类型的接口地址参数,如果开启此配置,默认展示一个Post类型的接口地址
+    enableFilterMultipartApis: false
+    # 是否开启请求参数缓存
+    enableRequestCache: true
+    # 是否启用Host
+    enableHost: false
+    enableHostText: 192.168.0.193:8000
+    # 是否开启自定义主页内容
+    enableHomeCustom: false
+    # 主页内容Markdown文件路径
+    homeCustomLocation: classpath:markdown/home.md
+    # 是否禁用Ui界面中的搜索框
+    enableSearch: false
+    # 是否显示Footer
+    enableFooter: false
+    # 是否开启自定义Footer
+    enableFooterCustom: true
+    # 自定义Footer内容
+    footerCustomContent: Apache License 2.0 | Copyright  2022-[陈家豪](https://www.jhlearn.top)
+    # 是否开启动态参数调试功能
+    enableDynamicParameter: false
+    # 启用调试
+    enableDebug: true
+    # 显示OpenAPI规范
+    enableOpenApi: false
+    # 显示服务分组
+    enableGroup: true
+  # 是否开启一个默认的跨域配置,该功能配合自定义Host使用
+  cors: false
+  # 是否开启生产环境保护策略
+  production: false
+  # 分组名称
+  groupName: "1.0版本"
+  # 文档标题
+  title: "力扣答题系统"
+  # 文档描述
+  description: "一个力扣答题系统的个性化定制版"
+  # 地址
+  termsOfServiceUrl: "https://www.jhlearn.com/"
+  # 联系方式
+  contact:
+    name: "陈家豪"
+    url: "www.jhlearn.top"
+    email: "408897865@qq.com"
+  # 文档版本
+  version: "1.0"
+  # 基础扫描目录
+  basePackage: "study.team.leetcode.web"
