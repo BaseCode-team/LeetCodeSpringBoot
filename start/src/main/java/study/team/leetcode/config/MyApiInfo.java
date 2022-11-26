@@ -7,10 +7,11 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 
 /**
+ * 我的接口个人信息
+ *
  * @author JiaHao
  * @version 1.0
  * @date 2022-11-06 20:17
- * @description 我的接口个人信息
  */
 @Component
 public class MyApiInfo {

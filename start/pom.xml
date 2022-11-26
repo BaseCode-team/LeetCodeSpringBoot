@@ -17,12 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>study.team</groupId>
-            <artifactId>web-adapter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <artifactId>adapter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
