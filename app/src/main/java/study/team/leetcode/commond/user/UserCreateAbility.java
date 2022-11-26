@@ -61,6 +61,7 @@ public class UserCreateAbility extends BaseAbility<UserCreateCmd, Void> {
      */
     @Override
     public Response checkIdempotent(UserCreateCmd abilityCmd) {
+        //todo 编写幂等校验逻辑
         return Response.buildSuccess();
     }
 

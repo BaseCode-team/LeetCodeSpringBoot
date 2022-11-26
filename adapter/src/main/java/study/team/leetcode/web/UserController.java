@@ -61,7 +61,7 @@ public class UserController {
     @ApiOperationSupport(author = "JiaHao", ignoreParameters = {"updateTime", "createTime"})
     @PutMapping(value = "/user")
     @WebLog(description = "更新用户信息")
-    public Response updateUser(@Validated(ValidGroup.Update.class) UserUpdateCmd cmd) {
+    public Response updateUser(@RequestBody @Validated(ValidGroup.Update.class) UserUpdateCmd cmd) {
         return service.updateUser(cmd);
     }
 

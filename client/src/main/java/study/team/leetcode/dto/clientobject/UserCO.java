@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import team.study.common.base.annotations.phone;
+import team.study.common.base.annotations.realname;
+import team.study.common.base.annotations.username;
 import team.study.common.base.exception.ValidGroup;
 
 import javax.validation.constraints.NotBlank;
@@ -23,6 +26,7 @@ public class UserCO extends AbstractCO {
      */
     @ApiModelProperty(value = "用户名", name = "userName", dataType = "String")
     @NotBlank(groups = ValidGroup.Create.class, message = "用户名不能为空")
+    @username
     private String userName;
 
     /**
@@ -30,6 +34,7 @@ public class UserCO extends AbstractCO {
      */
     @ApiModelProperty(value = "真实姓名", name = "realName", dataType = "String")
     @NotBlank(groups = ValidGroup.Create.class, message = "真实姓名不能为空")
+    @realname
     private String realName;
 
     /**
@@ -37,6 +42,7 @@ public class UserCO extends AbstractCO {
      */
     @ApiModelProperty(value = "手机号", name = "phone", dataType = "String")
     @NotBlank(groups = ValidGroup.Create.class, message = "手机号不能为空")
+    @phone
     private String phone;
 
     /**

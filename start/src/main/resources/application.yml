@@ -9,6 +9,12 @@ spring:
       # 配置策略
       matching-strategy: ant-path-matcher
 
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted # 全局逻辑删除的实体字段名
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
 knife4j:
   # 是否开启增强模式
   enable: true
