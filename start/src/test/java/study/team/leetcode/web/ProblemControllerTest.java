@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import study.team.leetcode.Application;
+import study.team.leetcode.dto.UserCreateCmd;
 import study.team.leetcode.dto.clientobject.UserCO;
 
 @RunWith(SpringRunner.class)
@@ -88,11 +89,13 @@ class ProblemControllerTest {
         userCO.setProvince("湖北");
         userCO.setCity("武汉");
         userCO.setCounty("硚口");
-        userCO.setRoleIds("1,3,5");
+        userCO.setRoleIds("1,3");
+        UserCreateCmd cmd = new UserCreateCmd();
+        cmd.setUserCO(userCO);
         mockMvc.perform(
                         MockMvcRequestBuilders.post("/user")
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .content(JSONObject.toJSONString(userCO)))
+                                .content(JSONObject.toJSONString(cmd)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }
