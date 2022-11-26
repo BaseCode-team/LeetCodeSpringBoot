@@ -12,27 +12,28 @@
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES = @@SQL_NOTES, SQL_NOTES = 0 */;
 
 --
 -- Table structure for table `leet_code_problem`
 --
 
 DROP TABLE IF EXISTS `leet_code_problem`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `leet_code_problem`(
-                                    `id`          int NOT NULL AUTO_INCREMENT COMMENT '题目id',
-                                    `no`          varchar(10) DEFAULT NULL COMMENT '题目编号',
-                                    `name`        varchar(25) DEFAULT NULL COMMENT '题目标题',
-                                    `description` text COMMENT '题目描述',
-                                    `pass_rate`   varchar(20) DEFAULT NULL COMMENT '题目通过率',
-                                    `level`       varchar(25) DEFAULT NULL COMMENT '题目难度等级',
-                                    `create_time` datetime(3) DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
-                                    `update_time` datetime(3) DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '更新时间',
-                                    `deleted`     varchar(10) DEFAULT '0' COMMENT '是否删除',
-                                    PRIMARY KEY (`id`)
+CREATE TABLE `leet_code_problem`
+(
+    `id`          int NOT NULL AUTO_INCREMENT COMMENT '题目id',
+    `no`          varchar(10) DEFAULT NULL COMMENT '题目编号',
+    `name`        varchar(25) DEFAULT NULL COMMENT '题目标题',
+    `description` text COMMENT '题目描述',
+    `pass_rate`   varchar(20) DEFAULT NULL COMMENT '题目通过率',
+    `level`       varchar(25) DEFAULT NULL COMMENT '题目难度等级',
+    `create_time` datetime(3) DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
+    `update_time` datetime(3) DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '更新时间',
+    `deleted`     varchar(30) DEFAULT '0' COMMENT '是否删除',
+    PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 3
   DEFAULT CHARSET = utf8mb4
@@ -68,9 +69,11 @@ CREATE TABLE `leet_code_solution`
     `solution_author`  varchar(40) DEFAULT NULL COMMENT '解题人',
     `create_time`      datetime(3) DEFAULT CURRENT_TIMESTAMP(3) COMMENT '首次提交解题时间',
     `update_time`      datetime(3) DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '更新答案时间',
-    `deleted`          varchar(10) DEFAULT '0' COMMENT '是否删除',
+    `deleted`          varchar(30) DEFAULT '0' COMMENT '是否删除',
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='力扣题解';
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci COMMENT ='力扣题解';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +101,7 @@ CREATE TABLE `role`
     `code`        varchar(25) DEFAULT NULL COMMENT '角色code',
     `create_time` datetime(3) DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
     `update_time` datetime(3) DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '更新时间',
-    `deleted`     varchar(10) DEFAULT '0'
+    `deleted`     varchar(30) DEFAULT '0'
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci COMMENT ='角色表';
@@ -139,7 +142,7 @@ CREATE TABLE `user`
     `county`      varchar(10) DEFAULT NULL COMMENT '区',
     `create_time` datetime(3) DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
     `update_time` datetime(3) DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '更新时间',
-    `deleted`     varchar(10) DEFAULT '0' COMMENT '是否删除'
+    `deleted`     varchar(30) DEFAULT '0' COMMENT '是否删除'
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci COMMENT ='用户表';
@@ -158,7 +161,9 @@ VALUES ('1595303332723654657', '帅哥', '陈一', '13100000000', '123456789', '
        ('1595979978342486017', '123', '123', '123', '123', '1', '123', '123', '123', '2022-11-25 11:17:33.394',
         '2022-11-26 11:13:57.363', '0'),
        ('1596340874801963010', '1234', '123', '123', '123', '1', '123', '123', '123', '2022-11-26 11:11:37.806',
-        '2022-11-26 11:11:37.806', '0');
+        '2022-11-26 11:11:37.806', '0'),
+       ('1596534928391053313', 'test', '456', '13100000001', 'asdasdqwe', '1', '123', '123', '123',
+        '2022-11-27 00:02:43.773', '2022-11-27 00:25:58.212', '2022-11-27 00:25:58');
 /*!40000 ALTER TABLE `user`
     ENABLE KEYS */;
 UNLOCK TABLES;
@@ -172,4 +177,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-26 12:20:11
+-- Dump completed on 2022-11-27  0:27:42
