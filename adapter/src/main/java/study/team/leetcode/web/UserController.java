@@ -7,9 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import study.team.leetcode.api.UserServiceI;
-import study.team.leetcode.dto.UserCreateCmd;
-import study.team.leetcode.dto.UserDeleteCmd;
-import study.team.leetcode.dto.UserUpdateCmd;
+import study.team.leetcode.dto.*;
 import study.team.leetcode.dto.query.UserListQry;
 import study.team.leetcode.dto.query.UserQry;
 import team.study.common.base.aop.WebLog;
@@ -32,6 +30,23 @@ public class UserController {
     public UserController(UserServiceI service) {
         this.service = service;
     }
+
+    @ApiOperation(value = "用户登录")
+    @ApiOperationSupport(author = "JiaHao", ignoreParameters = {"updateTime", "createTime", "realName", "phone", "roleIds", "province", "city", "county", "id"})
+    @PostMapping(value = "/login")
+    @WebLog(description = "用户登录")
+    public Response login(@RequestBody UserLoginCmd cmd) {
+        return service.login(cmd);
+    }
+
+    @ApiOperation(value = "用户登出")
+    @ApiOperationSupport(author = "JiaHao", ignoreParameters = {"updateTime", "createTime", "realName", "phone", "roleIds", "province", "city", "county", "userName", "password"})
+    @PostMapping(value = "/logout")
+    @WebLog(description = "用户登出")
+    public Response logout(@RequestBody UserLogoutCmd cmd) {
+        return service.logOut(cmd);
+    }
+
 
     @ApiOperation(value = "查询用户列表")
     @ApiOperationSupport(author = "JiaHao")

@@ -31,8 +31,7 @@ public interface UserAssemble {
     @Mappings({
             @Mapping(source = "province", target = "address.province"),
             @Mapping(source = "city", target = "address.city"),
-            @Mapping(source = "county", target = "address.county"),
-            @Mapping(target = "roles", expression = "java(User.paraseStr(userPO.getRoleIds()))")
+            @Mapping(source = "county", target = "address.county")
     })
     User toUser(UserPO userPO);
     //todo 转换Adress role deleted

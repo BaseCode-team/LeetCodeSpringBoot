@@ -1,8 +1,6 @@
 package study.team.leetcode.api;
 
-import study.team.leetcode.dto.UserCreateCmd;
-import study.team.leetcode.dto.UserDeleteCmd;
-import study.team.leetcode.dto.UserUpdateCmd;
+import study.team.leetcode.dto.*;
 import study.team.leetcode.dto.query.UserListQry;
 import study.team.leetcode.dto.query.UserQry;
 import team.study.common.base.response.Response;
@@ -13,6 +11,26 @@ import team.study.common.base.response.Response;
  * @author JiaHao
  */
 public interface UserServiceI {
+    /**
+     * 用户登录
+     *
+     * @param cmd 用户登录信息
+     * @return Response
+     * @author JiaHao
+     * @date 2022/12/11 14:13
+     **/
+    Response login(UserLoginCmd cmd);
+
+    /**
+     * 用户登出
+     *
+     * @param cmd 用户登录信息
+     * @return Response
+     * @author JiaHao
+     * @date 2022/12/11 14:13
+     **/
+    Response logOut(UserLogoutCmd cmd);
+
     /**
      * 新增用户
      *

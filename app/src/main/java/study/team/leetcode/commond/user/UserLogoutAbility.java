@@ -2,24 +2,21 @@ package study.team.leetcode.commond.user;
 
 import org.springframework.stereotype.Service;
 import study.team.leetcode.aggregate.user.repository.UserRepository;
-import study.team.leetcode.dto.UserDeleteCmd;
+import study.team.leetcode.dto.UserLogoutCmd;
 import study.team.leetcode.share.BaseAbility;
 import team.study.common.base.response.Response;
-import team.study.common.base.utils.ValidationUtil;
-
-import java.util.Objects;
 
 /**
- * 删除用户能力
+ * 用户登出能力
  *
  * @author JiaHao
- * @date 2022-11-26 09:41
+ * @date 2022-12-11 14:17
  */
 @Service
-public class UserDeleteAbility extends BaseAbility<UserDeleteCmd, Void> {
+public class UserLogoutAbility extends BaseAbility<UserLogoutCmd, Void> {
     private final UserRepository userRepository;
 
-    public UserDeleteAbility(UserRepository userRepository) {
+    public UserLogoutAbility(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -27,9 +24,8 @@ public class UserDeleteAbility extends BaseAbility<UserDeleteCmd, Void> {
      * @param abilityCmd abilityCmd
      */
     @Override
-    public void checkHandler(UserDeleteCmd abilityCmd) {
-        //校验用户是否存在
-        ValidationUtil.isFalse(Objects.isNull(userRepository.byId(abilityCmd.getId())), "USER_NOT_EXIST");
+    public void checkHandler(UserLogoutCmd abilityCmd) {
+
     }
 
     /**
@@ -37,7 +33,7 @@ public class UserDeleteAbility extends BaseAbility<UserDeleteCmd, Void> {
      * @return Response
      */
     @Override
-    public Response checkIdempotent(UserDeleteCmd abilityCmd) {
+    public Response checkIdempotent(UserLogoutCmd abilityCmd) {
         //todo 编写幂等校验逻辑
         return Response.buildSuccess();
     }
@@ -47,8 +43,7 @@ public class UserDeleteAbility extends BaseAbility<UserDeleteCmd, Void> {
      * @return Response
      */
     @Override
-    public Response execute(UserDeleteCmd abilityCmd) {
-        userRepository.delete(abilityCmd.getId());
+    public Response execute(UserLogoutCmd abilityCmd) {
         return Response.buildSuccess();
     }
 }

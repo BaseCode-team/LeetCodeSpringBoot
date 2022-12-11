@@ -3,12 +3,8 @@ package study.team.leetcode.service;
 import org.springframework.stereotype.Service;
 import study.team.leetcode.api.UserServiceI;
 import study.team.leetcode.commond.query.UserQryExe;
-import study.team.leetcode.commond.user.UserCreateAbility;
-import study.team.leetcode.commond.user.UserDeleteAbility;
-import study.team.leetcode.commond.user.UserUpdateAbility;
-import study.team.leetcode.dto.UserCreateCmd;
-import study.team.leetcode.dto.UserDeleteCmd;
-import study.team.leetcode.dto.UserUpdateCmd;
+import study.team.leetcode.commond.user.*;
+import study.team.leetcode.dto.*;
 import study.team.leetcode.dto.query.UserListQry;
 import study.team.leetcode.dto.query.UserQry;
 import team.study.common.base.response.Response;
@@ -31,7 +27,29 @@ public class AppUserServiceImpl implements UserServiceI {
     @Resource
     private UserDeleteAbility userDeleteAbility;
     @Resource
+    private UserLoginAbility userLoginAbility;
+    @Resource
+    private UserLogoutAbility userLogoutAbility;
+    @Resource
     private UserQryExe userQryExe;
+
+    /**
+     * @param cmd 用户登录信息
+     * @return Response
+     */
+    @Override
+    public Response login(UserLoginCmd cmd) {
+        return userLoginAbility.executeAbility(cmd);
+    }
+
+    /**
+     * @param cmd 用户登录信息
+     * @return Response
+     */
+    @Override
+    public Response logOut(UserLogoutCmd cmd) {
+        return userLogoutAbility.executeAbility(cmd);
+    }
 
     @Override
     public Response createUser(UserCreateCmd cmd) {

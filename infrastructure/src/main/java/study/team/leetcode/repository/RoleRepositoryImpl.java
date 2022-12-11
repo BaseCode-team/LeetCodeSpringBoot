@@ -8,7 +8,6 @@ import study.team.leetcode.aggregate.role.repository.RoleRepository;
 import study.team.leetcode.convertor.RoleAssemble;
 import study.team.leetcode.repository.database.po.RolePO;
 import study.team.leetcode.repository.database.service.RoleService;
-import team.study.common.base.aop.RepositoryLog;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +31,7 @@ public class RoleRepositoryImpl implements RoleRepository {
      * @param ids id列表
      * @return List<Role>
      */
-    @RepositoryLog(description = "根据id列表获取角色列表")
+
     @Override
     public List<Role> listByIds(List<Long> ids) {
         List<RolePO> rolePOS = service.listByIds(ids);
@@ -47,7 +46,7 @@ public class RoleRepositoryImpl implements RoleRepository {
     /**
      * @param aLong id
      */
-    @RepositoryLog(description = "删除角色")
+
     @Override
     public void delete(Long aLong) {
         LambdaQueryWrapper<RolePO> wrapper = new LambdaQueryWrapper<>();
@@ -60,7 +59,7 @@ public class RoleRepositoryImpl implements RoleRepository {
      * @param aLong id
      * @return Role
      */
-    @RepositoryLog(description = "根据id获取角色")
+
     @Override
     public Role byId(Long aLong) {
         LambdaQueryWrapper<RolePO> wrapper = new LambdaQueryWrapper<>();
@@ -72,7 +71,7 @@ public class RoleRepositoryImpl implements RoleRepository {
      * @param role 聚合根
      * @return Role
      */
-    @RepositoryLog(description = "保存或更新角色")
+
     @Override
     public Role save(Role role) {
         RolePO rolePO = RoleAssemble.INSTANCE.toRoleDO(role);

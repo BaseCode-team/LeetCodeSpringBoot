@@ -1,10 +1,13 @@
 package study.team.leetcode.aggregate.user.modal;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import study.team.leetcode.aggregate.role.repository.RoleRepository;
 import study.team.leetcode.share.valueobject.Address;
 import team.study.common.base.model.ddd.AggregateRoot;
 import team.study.common.base.utils.ValidationUtil;
@@ -25,8 +28,11 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Slf4j
+@JsonIgnoreProperties({"roleRepository"})
 public class User implements AggregateRoot {
 
+    @JSONField(serialize = false)
+    private RoleRepository roleRepository;
     /**
      * 用户id
      */
@@ -72,10 +78,19 @@ public class User implements AggregateRoot {
      */
     private LocalDateTime updateTime;
 
-    public static List<Role> paraseStr(String roles) {
+    public void setRoleRepository(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
+
+    public List<Role> paraseStr(String roles) {
         List<Long> roleIds = Arrays.stream(roles.split(",")).map(Long::valueOf).toList();
         return roleIds.stream()
-                .map(Role::new)
+                .map(id -> {
+                    Role role = new Role();
+                    role.setRoleRepository(roleRepository);
+                    role.bindrole(id);
+                    return role;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -86,7 +101,12 @@ public class User implements AggregateRoot {
      */
     public void bindRole(List<Long> roleIds) {
         this.roles = roleIds.stream()
-                .map(Role::new)
+                .map(id -> {
+                    Role role = new Role();
+                    role.setRoleRepository(roleRepository);
+                    role.bindrole(id);
+                    return role;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -98,7 +118,12 @@ public class User implements AggregateRoot {
     public void bindRole(String roles) {
         List<Long> roleIds = Arrays.stream(roles.split(",")).map(Long::valueOf).toList();
         this.roles = roleIds.stream()
-                .map(Role::new)
+                .map(id -> {
+                    Role role = new Role();
+                    role.setRoleRepository(roleRepository);
+                    role.bindrole(id);
+                    return role;
+                })
                 .collect(Collectors.toList());
     }
 
