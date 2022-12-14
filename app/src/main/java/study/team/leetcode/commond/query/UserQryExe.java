@@ -26,7 +26,7 @@ public class UserQryExe {
 
     public Response execute(UserQry qry) {
 
-        return null;
+        return Response.buildFailure("-100", "错误", "我还没写,要不你来写吧");
     }
 
     public Response execute(UserListQry cmd) {

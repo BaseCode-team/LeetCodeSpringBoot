@@ -14,6 +14,8 @@ import team.study.common.base.aop.WebLog;
 import team.study.common.base.exception.ValidGroup;
 import team.study.common.base.response.Response;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 用户控制器
  *
@@ -34,9 +36,8 @@ public class UserController {
     @ApiOperation(value = "用户登录")
     @ApiOperationSupport(author = "JiaHao", ignoreParameters = {"updateTime", "createTime", "realName", "phone", "roleIds", "province", "city", "county", "id"})
     @PostMapping(value = "/login")
-    @WebLog(description = "用户登录")
-    public Response login(@RequestBody UserLoginCmd cmd) {
-        return service.login(cmd);
+    public Response login(@RequestBody UserLoginCmd cmd, HttpServletResponse response) {
+        return service.login(cmd, response);
     }
 
     @ApiOperation(value = "用户登出")

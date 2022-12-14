@@ -1,6 +1,7 @@
 package study.team.leetcode.commond.user;
 
 import org.springframework.stereotype.Service;
+import study.team.leetcode.aggregate.role.repository.RoleRepository;
 import study.team.leetcode.aggregate.user.modal.User;
 import study.team.leetcode.aggregate.user.repository.UserRepository;
 import study.team.leetcode.convertor.UserAssemble;
@@ -21,9 +22,11 @@ import java.util.Objects;
 @Service
 public class UserUpdateAbility extends BaseAbility<UserUpdateCmd, Void> {
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public UserUpdateAbility(UserRepository userRepository) {
+    public UserUpdateAbility(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     /**
@@ -53,6 +56,7 @@ public class UserUpdateAbility extends BaseAbility<UserUpdateCmd, Void> {
     @Override
     public Response execute(UserUpdateCmd abilityCmd) {
         User user = UserAssemble.INSTANCE.toUser(abilityCmd.getUserCO());
+        user.setRoleRepository(roleRepository);
         user.bindRole(abilityCmd.getUserCO().getRoleIds());
         // saveAndFlush 与 save 的区别在于: saveAndFlush会立即提交sql, 而save会到最后提交sql
         // 如果需要发送消息或者发布事件,建议使用saveAndFlush来保证事务一致性

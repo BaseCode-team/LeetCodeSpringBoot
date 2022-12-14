@@ -10,6 +10,7 @@ import study.team.leetcode.dto.query.UserQry;
 import team.study.common.base.response.Response;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 用户接口实现类
@@ -38,8 +39,8 @@ public class AppUserServiceImpl implements UserServiceI {
      * @return Response
      */
     @Override
-    public Response login(UserLoginCmd cmd) {
-        return userLoginAbility.executeAbility(cmd);
+    public Response login(UserLoginCmd cmd, HttpServletResponse response) {
+        return userLoginAbility.executeAbility(cmd, response);
     }
 
     /**

@@ -72,6 +72,7 @@ public class UserCreateAbility extends BaseAbility<UserCreateCmd, Void> {
     @Override
     public Response execute(UserCreateCmd abilityCmd) {
         User user = UserAssemble.INSTANCE.toUser(abilityCmd.getUserCO());
+        user.setRoleRepository(roleRepository);
         user.bindRole(abilityCmd.getUserCO().getRoleIds());
         userRepository.save(user);
         userDomainService.printTag(user, AbilityContext.getValue(ROLE_INFO_KEY));

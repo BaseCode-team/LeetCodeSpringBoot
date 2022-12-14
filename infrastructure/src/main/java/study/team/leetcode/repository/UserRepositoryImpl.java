@@ -36,6 +36,9 @@ public class UserRepositoryImpl implements UserRepository {
         LambdaQueryWrapper<UserPO> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(UserPO::getUserName, userName);
         UserPO userPO = service.getBaseMapper().selectOne(wrapper);
+        if (userPO == null) {
+            return null;
+        }
         User user = UserAssemble.INSTANCE.toUser(userPO);
         user.setRoleRepository(roleRepository);
         user.bindRole(userPO.getRoleIds());
@@ -62,6 +65,9 @@ public class UserRepositoryImpl implements UserRepository {
         LambdaQueryWrapper<UserPO> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(UserPO::getId, aLong);
         UserPO userPO = service.getBaseMapper().selectOne(wrapper);
+        if (userPO == null) {
+            return null;
+        }
         User user = UserAssemble.INSTANCE.toUser(userPO);
         user.setRoleRepository(roleRepository);
         user.paraseStr(userPO.getRoleIds());

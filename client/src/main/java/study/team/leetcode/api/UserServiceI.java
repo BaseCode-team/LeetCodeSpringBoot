@@ -5,6 +5,8 @@ import study.team.leetcode.dto.query.UserListQry;
 import study.team.leetcode.dto.query.UserQry;
 import team.study.common.base.response.Response;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 用户接口
  *
@@ -19,7 +21,7 @@ public interface UserServiceI {
      * @author JiaHao
      * @date 2022/12/11 14:13
      **/
-    Response login(UserLoginCmd cmd);
+    Response login(UserLoginCmd cmd, HttpServletResponse response);
 
     /**
      * 用户登出

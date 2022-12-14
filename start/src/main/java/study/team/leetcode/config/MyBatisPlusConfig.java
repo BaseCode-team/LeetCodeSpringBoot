@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInt
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import team.study.common.base.datasource.MyMetaObjectHandler;
 
 /**
  * MyBatisPlus配置类
@@ -40,5 +41,9 @@ public class MyBatisPlusConfig {
         return interceptor;
     }
 
+    @Bean
+    public MyMetaObjectHandler metaObjectHandler() {
+        return new MyMetaObjectHandler();
+    }
 
 }
